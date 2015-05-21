@@ -34,6 +34,7 @@ public class VistaPrincipal extends JPanel {
 		JButton();
 		JComobox();
 		JTextFiel();
+		
 	}
 	
 	private void Jlabel(){

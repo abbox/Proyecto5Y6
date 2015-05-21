@@ -5,12 +5,17 @@ import Vista.VistaApp;
 
 public class GameApp {
 
+	private static VistaApp vApp;
+	
 	public static void main(String[] args) {
 		ConexionBD gameDB;
 		
 		
-		VistaApp vistaApp=new VistaApp();
-		vistaApp.setVisible(true);
+		vApp=new VistaApp();
+		vApp.setVisible(true);
+		
+		
+		
 
 	}
 

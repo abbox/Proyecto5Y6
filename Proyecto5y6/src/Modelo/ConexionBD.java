@@ -7,6 +7,7 @@ import java.sql.Statement;
 
 
 
+
 public class ConexionBD {
 	static final String CONTROLADOR_MYSQL="com.mysql.jbdc.Driver";
 	//----------------------------------------------------------------
@@ -83,5 +84,6 @@ public ResultSet query(String query){
 		}
 		return rs;
 	}
+
 
 }

@@ -1,58 +1,72 @@
 package Vista;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuBar;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 public class VistaApp extends JFrame {
 
-	private JPanel contentPane;
-	private JMenuBar menuBar;
-	private JMenu mnNewMenu,mnNewMenu_1,mnNewMenu_2;
+	private VistaPrincipal vp;
+	private VistaJuegos vj;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VistaApp frame = new VistaApp();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public VistaApp() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 469, 446);
-		contentPane = new VistaPrincipal();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+		menu();
 		
-		menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 434, 21);
-		contentPane.add(menuBar);
 		
-		mnNewMenu = new JMenu("Principal");
-		menuBar.add(mnNewMenu);
 		
-		mnNewMenu_1 = new JMenu("Juegos");
-		menuBar.add(mnNewMenu_1);
+		//DECLARACION DE PANELES
+		vp = new VistaPrincipal();
+		vj = new VistaJuegos();
+		getContentPane().setLayout(new CardLayout(0, 0));
 		
-		mnNewMenu_2 = new JMenu("Perfile");
-		menuBar.add(mnNewMenu_2);
+		
+		this.getContentPane().add(vp, "Principal");
+		this.getContentPane().add(vj, "Juegos");
+		
+	}
+	
+	private void menu(){
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnPrincipal = new JMenu("Principal");
+		menuBar.add(mnPrincipal);
+		
+		JMenuItem mntmPrincipal = new JMenuItem("Principal");
+		mntmPrincipal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CardLayout layout = (CardLayout)getContentPane().getLayout();
+				layout.show(getContentPane(), "Principal");
+				
+			}
+		});
+		mnPrincipal.add(mntmPrincipal);
+		
+		JMenu mnJuegos = new JMenu("Juegos");
+		menuBar.add(mnJuegos);
+		
+		JMenuItem mntmJuegos = new JMenuItem("Juegos");
+		mntmJuegos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				CardLayout layout = (CardLayout)getContentPane().getLayout();
+				layout.show(getContentPane(), "Juegos");
+			}
+		});
+		mnJuegos.add(mntmJuegos);
+		
+		JMenu mnPerfil = new JMenu("Perfil");
+		menuBar.add(mnPerfil);
+		
+		JMenuItem mntmPerfil = new JMenuItem("Perfil");
+		mnPerfil.add(mntmPerfil);
 	}
 }
